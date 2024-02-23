@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Techfest Fitness Planner</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Techfest Fitness Planner</h1>
+    </header>
+    <main>
+        <section id="input-section">
+            <h2>Customize Your Fitness Plan</h2>
+            <form action="/generate_plan" method="POST">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" required><br><br>
+
+                <label for="workout-time">Preferred Workout Time:</label>
+                <select id="workout-time" name="workout-time">
+                    <option value="Morning">Morning (6:00 am - 9:00 am)</option>
+                    <option value="Afternoon">Afternoon (12:00 pm - 3:00 pm)</option>
+                    <option value="Evening">Evening (6:00 pm - 9:00 pm)</option>
+                </select><br><br>
+
+                <label>Additional Activities:</label><br>
+                <input type="checkbox" id="yoga" name="activities" value="Yoga">
+                <label for="yoga">Yoga</label><br>
+                <input type="checkbox" id="swimming" name="activities" value="Swimming">
+                <label for="swimming">Swimming</label><br>
+                <input type="checkbox" id="sports" name="activities" value="Playing Sports">
+                <label for="sports">Playing Sports</label><br><br>
+
+                <label for="activity-days">Additional Activity Days:</label><br>
+                <input type="checkbox" id="monday" name="activity-days" value="Monday">
+                <label for="monday">Monday</label><br>
+                <input type="checkbox" id="tuesday" name="activity-days" value="Tuesday">
+                <label for="tuesday">Tuesday</label><br>
+                <input type="checkbox" id="wednesday" name="activity-days" value="Wednesday">
+                <label for="wednesday">Wednesday</label><br>
+                <input type="checkbox" id="thursday" name="activity-days" value="Thursday">
+                <label for="thursday">Thursday</label><br>
+                <input type="checkbox" id="friday" name="activity-days" value="Friday">
+                <label for="friday">Friday</label><br>
+                <input type="checkbox" id="saturday" name="activity-days" value="Saturday">
+                <label for="saturday">Saturday</label><br>
+                <input type="checkbox" id="sunday" name="activity-days" value="Sunday">
+                <label for="sunday">Sunday</label><br><br>
+
+                <label for="weight">Weight (kg):</label>
+                <input type="number" id="weight" name="weight" required><br><br>
+
+                <label for="goals">Fitness Goals:</label><br>
+                <textarea id="goals" name="goals" rows="4" required></textarea><br><br>
+
+                <button type="submit">Generate Plan</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
