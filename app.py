@@ -1,38 +1,50 @@
-from flask import Flask, render_template, request
-from datetime import timedelta
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Plan Generator</title>
+</head>
+<body>
+    <h1>Generate Your Fitness Plan</h1>
+    <form action="/generate_plan" method="post">
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required><br><br>
 
-app = Flask(__name__)
+        <label for="workout-time">Preferred Workout Time:</label>
+        <select id="workout-time" name="workout-time">
+            <option value="Morning">Morning</option>
+            <option value="Afternoon">Afternoon</option>
+            <option value="Evening">Evening</option>
+        </select><br><br>
 
-@app.route('/')
-def index():
-    return render_template('index.html')
+        <label>Additional Activities:</label><br>
+        <input type="checkbox" id="yoga" name="activities" value="Yoga">
+        <label for="yoga">Yoga</label><br>
+        <input type="checkbox" id="swimming" name="activities" value="Swimming">
+        <label for="swimming">Swimming</label><br>
+        <input type="checkbox" id="sports" name="activities" value="Playing Sports">
+        <label for="sports">Playing Sports</label><br><br>
 
-@app.route('/generate_plan', methods=['GET', 'POST'])  # Allow both GET and POST requests for this route
-def generate_plan():
-    if request.method == 'POST':  # Ensure method is POST
-        age = int(request.form['age'])
-        workout_time = request.form['workout-time']
-        activities = request.form.getlist('activities')
-        activity_days = request.form.getlist('activity-days')
-        weight = float(request.form['weight'])
-        goals = request.form['goals']
+        <label for="activity-days">Additional Activity Days:</label><br>
+        <input type="checkbox" id="monday" name="activity-days" value="Monday">
+        <label for="monday">Monday</label><br>
+        <input type="checkbox" id="tuesday" name="activity-days" value="Tuesday">
+        <label for="tuesday">Tuesday</label><br>
+        <input type="checkbox" id="wednesday" name="activity-days" value="Wednesday">
+        <label for="wednesday">Wednesday</label><br>
+        <input type="checkbox" id="thursday" name="activity-days" value="Thursday">
+        <label for="thursday">Thursday</label><br>
+        <input type="checkbox" id="friday" name="activity-days" value="Friday">
+        <label for="friday">Friday</label><br><br>
 
-        # Logic to generate fitness plan
-        # You can use the provided code for generating the plan here
+        <label for="weight">Weight (kg):</label>
+        <input type="number" id="weight" name="weight" required><br><br>
 
-        # For demonstration purposes, let's assume we generate a sample plan
-        plan = {
-            'age': age,
-            'workout_time': workout_time,
-            'activities': activities,
-            'activity_days': activity_days,
-            'weight': weight,
-            'goals': goals
-        }
+        <label for="goals">Fitness Goals:</label><br>
+        <textarea id="goals" name="goals" rows="4" required></textarea><br><br>
 
-        return render_template('plan.html', plan=plan)
-    else:
-        return render_template('index.html')  # Render the index.html template for GET requests
-
-if __name__ == '__main__':
-    app.run(debug=True)
+        <button type="submit">Generate Plan</button>
+    </form>
+</body>
+</html>
