@@ -7,29 +7,32 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/generate_plan', methods=['POST'])
+@app.route('/generate_plan', methods=['POST'])  # Allow POST requests for this route
 def generate_plan():
-    age = int(request.form['age'])
-    workout_time = request.form['workout-time']
-    activities = request.form.getlist('activities')
-    activity_days = request.form.getlist('activity-days')
-    weight = float(request.form['weight'])
-    goals = request.form['goals']
+    if request.method == 'POST':  # Ensure method is POST
+        age = int(request.form['age'])
+        workout_time = request.form['workout-time']
+        activities = request.form.getlist('activities')
+        activity_days = request.form.getlist('activity-days')
+        weight = float(request.form['weight'])
+        goals = request.form['goals']
 
-    # Logic to generate fitness plan
-    # You can use the provided code for generating the plan here
+        # Logic to generate fitness plan
+        # You can use the provided code for generating the plan here
 
-    # For demonstration purposes, let's assume we generate a sample plan
-    plan = {
-        'age': age,
-        'workout_time': workout_time,
-        'activities': activities,
-        'activity_days': activity_days,
-        'weight': weight,
-        'goals': goals
-    }
+        # For demonstration purposes, let's assume we generate a sample plan
+        plan = {
+            'age': age,
+            'workout_time': workout_time,
+            'activities': activities,
+            'activity_days': activity_days,
+            'weight': weight,
+            'goals': goals
+        }
 
-    return render_template('plan.html', plan=plan)
+        return render_template('plan.html', plan=plan)
+    else:
+        return "Method Not Allowed", 405  # Return 405 error for other methods
 
 if __name__ == '__main__':
     app.run(debug=True)
