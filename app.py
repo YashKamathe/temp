@@ -7,7 +7,7 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/generate_plan', methods=['POST'])  # Allow POST requests for this route
+@app.route('/generate_plan', methods=['GET', 'POST'])  # Allow both GET and POST requests for this route
 def generate_plan():
     if request.method == 'POST':  # Ensure method is POST
         age = int(request.form['age'])
@@ -32,7 +32,7 @@ def generate_plan():
 
         return render_template('plan.html', plan=plan)
     else:
-        return "Method Not Allowed", 405  # Return 405 error for other methods
+        return render_template('index.html')  # Render the index.html template for GET requests
 
 if __name__ == '__main__':
     app.run(debug=True)
